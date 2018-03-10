@@ -18,9 +18,9 @@ The number of destroyed objects was set to all but one, and as soon as the respa
 4. Add `Spawner/ObjectSpawner.prefab` to your project, and update the Script settings in Unity's Inspector window to use the prefab you want to be spawned in. Check out the [Customization](#Customization) header for more details.
 
 ## Customization
-- Unity's Inspector Window
-![Inspector](Demo/inspector.png)
-
+Unity's Inspector Window         |
+:-------------------------------:|
+![Inspector](Demo/inspector.png) |
 - `Spawn Radius`: The radius that you want the objects to spawn within. The objects will spawn in random locations between the radius and the ObjectSpawner.
 - `Trigger Radius`: The radius the trigger extends to. When the players distance to the the ObjectSpawner is within the `Trigger Radius`, the objects are spawned in. When the player leaves this radius, the Objects are destroyed from the scene until the player re-enters the radius.
 - `Max Game Objects`: How many objects the Spawner can spawn in.
