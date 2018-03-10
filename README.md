@@ -1,4 +1,5 @@
 # Dynamic Object Spawner
+The Dynamic Object Spawner was made for performance enhancement so that GameObjects or enemies that are not seen or not in use do not appear in the game. This is more efficient for CPU usage and can allow more objects to appear be in your scene, allowing the developer to focus more on intricate AI.
 
 Demo                       |
 :-------------------------:|
@@ -15,7 +16,7 @@ The number of destroyed objects was set to all but one, and as soon as the respa
 1. Add `Spawner/ObjectSpawner.cs` to your project.
 2. Ensure your player is tagged `Player` or change this code in `ObjectSpawner.cs` if you want your player to be named something else
 3. Ensure your player has some Collider (with `Is Trigger` unchecked) and a Rigidbody.
-4. Add `Spawner/ObjectSpawner.prefab` to your project, and update the Script settings in Unity's Inspector window to use the prefab you want to be spawned in. Check out the [Customization](#Customization) header for more details.
+4. Add `Spawner/ObjectSpawner.prefab` to your project, and update the Script settings in Unity's Inspector window to use the prefab you want to be spawned in. Check out the [Customization](##Customization) header for more details.
 
 ## Customization
 Unity's Inspector Window         |
