@@ -4,10 +4,10 @@ using UnityEngine;
 using UnityEngine.AI;
 
 /*
- * 		This class uses UnityEngine.AI and thus requires that the Unity Scene has
+ * 	This class uses UnityEngine.AI and thus requires that the Unity Scene has
  * a NavMesh built.
  *
- * 		The intended use is for performance enhancement so that GameObjects or
+ * 	The intended use is for performance enhancement so that GameObjects or
  * enemies that are not seen or not in use do not appear in the game. This
  * is more efficient for CPU usage and can allow more objects to appear be in
  * your scene, allowing the developer to focus more on intricate AI, making
@@ -115,8 +115,8 @@ public class ObjectSpawner : MonoBehaviour {
 	 * objects will not spawn back until the respawn time has been fufilled.
 	 *
 	 * Usage: If you are spawning enemies, call this method everytime an enemy
-	 * 				dies. Then, a body will remain in the game but the spawner will
-	 * 				still keep track of the objects alive.
+	 * 	is defeated. Then, a body will remain in the game but the spawner
+	 * 	will still keep track of the objects alive.
 	 */
 	public void incrementObjectsDestroyed () {
 		++objectsDestroyed;
