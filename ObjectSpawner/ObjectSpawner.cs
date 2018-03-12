@@ -29,39 +29,42 @@ public class ObjectSpawner : MonoBehaviour {
 
 	BoxCollider boxCollider;
 
-	void Start () {
+	void Start ()
+	{
 		setCurrentTime();
 		setPlayer();
 		setBoxCollider();
 		spawnObjects();
 	}
 
-	void OnTriggerEnter (Collider other) {
-		if (other.gameObject.tag == "Player") {
-				spawnObjects();
-		}
+	void OnTriggerEnter (Collider other)
+	{
+		if (other.gameObject.tag == "Player") spawnObjects();
 	}
 
-	void OnTriggerExit (Collider other) {
-		if (other.gameObject.tag == "Player") {
-				destroyObjects();
-		}
+	void OnTriggerExit (Collider other)
+	{
+		if (other.gameObject.tag == "Player") destroyObjects();
 	}
 
-	void setPlayer () {
+	void setPlayer ()
+	{
 		player = GameObject.FindWithTag("Player");
 	}
 
-	void setCurrentTime () {
+	void setCurrentTime ()
+	{
 		respawnTime = Time.time;
 	}
 
-	void setBoxCollider () {
+	void setBoxCollider ()
+	{
 		boxCollider = GetComponent<BoxCollider>();
 		boxCollider.size = new Vector3(triggerRadius, triggerRadius, triggerRadius);
 	}
 
-	void spawnObjects () {
+	void spawnObjects ()
+	{
 		Vector3 pos = this.transform.position;
 		int objectsToCreate = calculateObjectsToCreate();
 
@@ -70,7 +73,8 @@ public class ObjectSpawner : MonoBehaviour {
 		for (int i = 0; i < objectsToCreate; i++) createObject(pos);
 	}
 
-	void createObject (Vector3 startingPosition) {
+	void createObject (Vector3 startingPosition)
+	{
 		Vector3 pos = startingPosition;
 		NavMeshHit myNavHit;
 
@@ -80,33 +84,36 @@ public class ObjectSpawner : MonoBehaviour {
 		Vector3 objectPosition = new Vector3(randomX + pos.x, pos.y, randomZ + pos.z);
 
 		// This method outputs the nearest NavMesh position within 1000 units
-		if(NavMesh.SamplePosition(objectPosition, out myNavHit, 1000 , -1)) {
+		if(NavMesh.SamplePosition(objectPosition, out myNavHit, 1000 , -1))
+		{
 			objectPosition = myNavHit.position;
 		}
 		
 		curGameObjects.Add(Instantiate(prefab, objectPosition, Quaternion.identity));
 	}
 
-	int calculateObjectsToCreate () {
+	int calculateObjectsToCreate ()
+	{
 		int numInactive = objectsDestroyed;
 
-		if (shouldRespawn()) {
-				numInactive = 0;
-				objectsDestroyed = 0;
-				setCurrentTime();
+		if (shouldRespawn())
+		{
+			numInactive = 0;
+			objectsDestroyed = 0;
+			setCurrentTime();
 		}
 
 		return maxGameObjects - numInactive;
 	}
 
-	bool shouldRespawn () {
+	bool shouldRespawn ()
+	{
 		return (Time.time - respawnTime > secondsToRespawn);
 	}
 
-	void destroyObjects () {
-		foreach (GameObject obj in curGameObjects) {
-			Destroy (obj, 1.0f);
-		}
+	void destroyObjects ()
+	{
+		foreach (GameObject obj in curGameObjects) Destroy (obj, 1.0f);
 		curGameObjects = new List<GameObject>();
 	}
 
@@ -118,7 +125,8 @@ public class ObjectSpawner : MonoBehaviour {
 	 * 	is defeated. Then, a body will remain in the game but the spawner
 	 * 	will still keep track of the objects alive.
 	 */
-	public void incrementObjectsDestroyed () {
+	public void incrementObjectsDestroyed ()
+	{
 		++objectsDestroyed;
 	}
 }
